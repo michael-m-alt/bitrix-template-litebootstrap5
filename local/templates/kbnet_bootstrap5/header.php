@@ -74,9 +74,13 @@ if($arSite = $rsSite->Fetch()) {
         
         <h1 id="pagetitle"><?$APPLICATION->ShowTitle(false);?></h1>
         
+        <?$APPLICATION->ShowViewContent("before_content");?>
+        
         <div class="content">
-            <?$APPLICATION->ShowViewContent();?>
+            <?$APPLICATION->ShowViewContent("main_content");?>
         </div>
+        
+        <?$APPLICATION->ShowViewContent("after_content");?>
     </div>
 </main>
 
