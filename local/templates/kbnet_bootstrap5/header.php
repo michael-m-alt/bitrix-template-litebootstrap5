@@ -1,5 +1,12 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 IncludeTemplateLangFile(__FILE__);
+
+// Получаем название сайта
+$siteName = "";
+$rsSite = CSite::GetList("", "", array("LID" => SITE_ID));
+if($arSite = $rsSite->Fetch()) {
+    $siteName = $arSite["NAME"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?=LANGUAGE_ID?>">
@@ -26,7 +33,7 @@ IncludeTemplateLangFile(__FILE__);
         <div class="row align-items-center">
             <div class="col-md-3">
                 <a href="/" class="text-white text-decoration-none">
-                    <h1 class="h4 mb-0"><?=GetSiteName()?></h1>
+                    <h1 class="h4 mb-0"><?=$siteName?></h1>
                 </a>
             </div>
             <div class="col-md-9">
@@ -78,7 +85,7 @@ IncludeTemplateLangFile(__FILE__);
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <p class="mb-0">&copy; <?=date("Y")?> <?=GetSiteName()?>. Все права защищены.</p>
+                <p class="mb-0">&copy; <?=date("Y")?> <?=$siteName?>. Все права защищены.</p>
                 <p class="text-muted small">Шаблон разработан студией <a href="https://www.kbnet.ru" target="_blank" class="text-decoration-none">K.B.Net</a> (kbnet)</p>
             </div>
             <div class="col-md-6 text-md-end">
